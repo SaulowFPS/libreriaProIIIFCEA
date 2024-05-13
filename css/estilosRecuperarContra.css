@@ -1,0 +1,42 @@
+/* Estilos generales */
+body {
+    background-image: url("img/pixelcut-export.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; /* Ajusta la altura del cuerpo al 100% de la altura de la ventana */
+}
+
+.card {
+    margin-top: 5rem;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilos para el contenedor del formulario de recuperación de contraseña */
+.recover-password-container {
+    background-color: #e9d7c3; /* 80% de opacidad */
+    padding: 20px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.85;
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Ajusta el margen derecho del ícono */
+.bi-box-arrow-in-right {
+    font-size: 1.5em;
+    padding-left: 50px; /* Ajusta el valor según tus necesidades */
+}
+
+/* Cambia el color de fondo del botón al pasar el cursor */
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para el texto */
+label,
+a {
+    color: #333; /* Texto oscuro para mayor legibilidad */
+}

@@ -1,0 +1,168 @@
+  /* Estilos para el menú */
+  body {
+    background-image: url("img/pixelcut-export.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh; /* Ajusta la altura del cuerpo al 100% de la altura de la ventana */
+  }
+
+  /* Estilos para el icono de administrador */
+  #adminIcon {
+    font-size: 1.2rem; /* Tamaño del icono */
+    color: #da7909; /* Color del icono */
+  }
+
+  /* Estilos para el menú de navegación */
+  .navbar {
+    background-size: auto;
+    background-repeat: repeat-x;
+    background-color: #f8f9fa; /* Color de fondo del menú */
+    border-bottom: 2px solid #da7909; /* Borde inferior */
+    opacity: 0.85; /* Opacidad */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+
+  .navbar-nav {
+    margin: auto; /* Centra los elementos del menú */
+  }
+
+  /* Estilos para los elementos del menú */
+  .nav-link {
+    font-family: "Arial", sans-serif; /* Tipografía */
+    padding: 10px 15px; /* Espaciado */
+    color: #333; /* Color de texto */
+    transition: all 0.3s ease; /* Transición suave */
+  }
+
+  /* Efecto de hover para los elementos del menú */
+  .nav-link:hover {
+    color: #da7909; /* Color de texto al pasar el cursor */
+    background-color: rgba(255, 165, 0, 0.2); /* Color de fondo al pasar el cursor */
+  }
+
+  /* Estilos para AlertifyJS */
+  /* Personalización de AlertifyJS para que coincida con el estilo del sitio */
+  .alertify .ajs-header {
+    background-color: #f8f9fa; /* Color de fondo del encabezado */
+  }
+
+  .alertify .ajs-footer .ajs-buttons .ajs-button {
+    background-color: #da7909; /* Color de fondo de los botones */
+    color: white; /* Color de texto de los botones */
+  }
+
+  .alertify .ajs-footer .ajs-buttons .ajs-button:hover {
+    background-color: rgba(255, 165, 0, 0.8); /* Color de fondo de los botones al pasar el cursor */
+  }
+
+  .alertify .ajs-content {
+    color: #333; /* Color de texto del contenido */
+    font-family: "Arial", sans-serif; /* Tipografía */
+  }
+
+  .alertify .ajs-modal {
+    border-radius: 10px; /* Redondea los bordes */
+    opacity: 0.95; /* Opacidad del modal */
+  }
+
+  /* Estilos para la tabla DataTables */
+  #TablaLibros {
+    background-color: #f8f9fa; /* Color de fondo de la tabla */
+    border-radius: 10px; /* Bordes redondeados */
+    opacity: 0.85; /* Opacidad */
+    color: #333; /* Color de texto */
+    border-spacing: 0;
+  }
+
+  #TablaLibros td, #TablaLibros th {
+    padding: 8px; /* Espaciado interno de las celdas */
+    text-align: center; /* Centra el texto horizontalmente */
+    vertical-align: middle; /* Centra el texto verticalmente */
+  }
+  #TablaLibros thead th {
+    background-color: #da7909; /* Color de fondo de los encabezados de la tabla */
+    color: white; /* Color de texto de los encabezados de la tabla */
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+  }
+  #TablaLibros {
+    width: 100% !important; /* Forzar a la tabla a ocupar todo el ancho */
+  }
+
+  #TablaLibros tbody td {
+    color: #333; /* Color de texto de las celdas de la tabla */
+  }
+  /* Estilos para los botones ABM dentro de la tabla */
+  #TablaLibros .btn {
+    margin: 0 5px; /* Espaciado entre botones */
+    font-size: 0.8rem; /* Tamaño de texto más pequeño para los botones */
+  }
+/* Estilos para los botones de DataTables con imágenes */
+.dt-button {
+  background-color: transparent; /* Fondo transparente para los botones */
+  border: none; /* Sin bordes */
+  padding: 0; /* Sin espaciado interno */
+}
+
+/* Estilos para las imágenes dentro de los botones */
+.dt-button img {
+  height: 30px; /* Altura de la imagen ajustada */
+  width: auto; /* Ancho automático para mantener la proporción */
+  vertical-align: middle; /* Alineación vertical */
+}
+
+/* Estilos para el botón de vista de impresión */
+.buttons-print img {
+  /* Ajusta el tamaño del icono de impresora */
+  height: 30px;
+}
+
+/* Estilos para el botón de exportar a Excel */
+.buttons-excel img {
+  /* Ajusta el tamaño del icono de Excel */
+  height: 30px;
+}
+
+/* Estilos para el botón de exportar a PDF */
+.buttons-pdf img {
+  /* Ajusta el tamaño del icono de PDF */
+  height: 30px;
+}
+
+/* Estilos para el botón de copiar al portapapeles */
+.buttons-copy img {
+  /* Ajusta el tamaño del icono de copiar */
+  height: 30px;
+}
+
+/* Estilos para el botón de exportar a CSV */
+.buttons-csv img {
+  /* Ajusta el tamaño del icono de CSV */
+  height: 30px;
+}
+
+
+
+@media (max-width: 768px) {
+  /* Estilos para los botones ABM dentro de la tabla en dispositivos móviles */
+  #TablaLibros .btn {
+    font-size: 0.6rem; /* Reduce el tamaño del texto de los botones */
+    padding: 5px; /* Reduce el espaciado interno de los botones */
+  }
+
+  /* Reduce el tamaño de las imágenes de los botones para dispositivos móviles */
+  .dt-button img {
+    height: 20px; /* Altura más pequeña para las imágenes */
+  }
+
+  /* Opcional: Oculta los textos de los botones para ahorrar espacio */
+  .dt-button span {
+    display: none;
+  }
+}
+

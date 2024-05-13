@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio de Sesión</title>
+    <!-- Importaciones CSS -->
+    <link rel="stylesheet" href="BT/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="alertifyjs/css/alertify.min.css" />
+    <link rel="stylesheet" href="css/estilosLogin.css" />
+    <link rel="stylesheet" href="css/estilosRecuperarContra.css" />
+    <link rel="stylesheet" href="css/estilosCrearUsuario.css" />
+    <link rel="icon" href="css/img/casa.png" />
+    <!-- Importación de iconos locales -->
+    <link
+      href="BT/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Contenedor principal -->
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <!-- Formulario de inicio de sesión (inicialmente visible) -->
+          <div id="login-container">
+            <div class="card login-container">
+              <div class="card-body">
+                <h2 class="text-center mb-4">Iniciar sesión</h2>
+                <form id="login-form">
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-people"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        name="username"
+                        placeholder="Ingrese su usuario"
+                        required
+                        autocomplete="off"
+                        autofocus
+                        maxlength="12"
+                        pattern="[A-Za-z0-9_]{4,20}"
+                      />
+                      <span id="username-error" class="text-danger"></span>
+                      <!-- Mensaje de error para el usuario -->
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-lock"></i
+                      ></span>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Ingrese su contraseña"
+                        required
+                        maxlength="12"
+                        
+                      />
+                      <span id="password-error" class="text-danger"></span>
+                      <!-- Mensaje de error para la contraseña -->
+                      <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="togglePassword"
+                      >
+                        <i class="bi bi-eye-slash"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-door-open"></i> Iniciar sesión
+                  </button>
+                </form>
+                <div class="text-center mt-3" id="create-account">
+                  <a href="#" id="create-account-link">Crear cuenta</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario de Crear Cuenta (inicialmente oculto) -->
+          <div id="create-account-container" style="display: none">
+            <div class="card create-account-container">
+              <div class="card-body">
+                <h2 class="text-center mb-4">Crear Cuenta</h2>
+                <form id="create-account-form">
+                  <div class="mb-3">
+                    <label for="full-name" class="form-label"
+                      >Nombre y Apellido</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="full-name"
+                      name="full-name"
+                      placeholder="Ingresa tu nombre y apellido"
+                      required
+                      autofocus
+                      maxlength="50"
+                      autocomplete="off"
+                      
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="RUC" class="form-label">RUC O CI</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="RUC"
+                      name="RUC"
+                      placeholder="Ingresa su RUC o CI"
+                      required
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="new-username" class="form-label">Usuario</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="new-username"
+                      name="new-username"
+                      placeholder="Ingresa tu usuario"
+                      required
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="new-password" class="form-label"
+                      >Contraseña</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="new-password"
+                      name="new-password"
+                      placeholder="Ingresa tu contraseña"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="confirm-password" class="form-label"
+                      >Confirmar Contraseña</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="confirm-password"
+                      name="confirm-password"
+                      placeholder="Confirma tu contraseña"
+                      required
+                    />
+                  </div>
+                  <!-- Campo de selección de roles -->
+                  <div class="mb-3">
+                    <label for="user-role" class="form-label">Rol</label>
+                    <select
+                      class="form-select"
+                      id="user-role"
+                      name="user-role"
+                      required
+                    >
+                      <!-- Opciones de roles permitidos -->
+                      <option value="comprador">Comprador</option>
+                      <option value="empleado">Empleado</option>
+                      <!-- La opción de administrador se activa si hay un administrador logueado -->
+                      <option value="admin" disabled id="admin-option">
+                        Administrador
+                      </option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">
+                    Crear Cuenta
+                  </button>
+                </form>
+                <button id="back-to-login-from-create" class="btn btn-link">
+                  <i class="bi bi-arrow-left"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Importación de JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="alertifyjs/alertify.js"></script>
+    <script src="alertifyjs/alertify.min.js"></script>
+    <script src="BT/js/bootstrap.min.js"></script>
+
+    <script src="js/anime/anime.min.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

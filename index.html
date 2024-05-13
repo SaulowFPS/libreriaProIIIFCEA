@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú Principal</title>
+    <!-- Agrega los estilos de Bootstrap -->
+    <link rel="stylesheet" href="BT/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="alertifyjs/css/alertify.min.css" />
+
+    <link rel="icon" href="css/img/user-interface.png" />
+    <link rel="stylesheet" href="BT/css/dataTables.bootstrap5.css" />
+    <!-- <link rel="stylesheet" href="dt/datatables.css" /> -->
+    <link rel="stylesheet" href="dt/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="dt/datatables.min.css" />
+    <link rel="stylesheet" href="BT/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/estilosMenu.css" />
+    <link
+      rel="stylesheet"
+      href="BT/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css"
+    />
+
+    <script src="dt/datatables.min.js"></script>
+    <script src="BT/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="dt/datatables.js"></script> -->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Barra de navegación -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Menú</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!-- Opciones del menú -->
+              <li class="nav-item">
+                <button
+                  class="nav-link btn btn-primary"
+                  id="btnInicio"
+                  aria-current="page"
+                  onclick="location.href='Login.html'"
+                >
+                  <i class="bi bi-house-door"></i> Inicio
+                </button>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Libros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Proveedores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Compras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ventas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Usuarios</a>
+              </li>
+              <!-- Agrega más elementos del menú según sea necesario -->
+            </ul>
+            <!-- Información del usuario y su rol -->
+            <div class="d-flex align-items-center me-2">
+              <!-- Dentro del div con clase "me-2" -->
+              <p class="mb-0">
+                Usuario: <span id="loggedUser"></span
+                ><span id="adminIcon" class="ms-1 bi bi-skull"></span> | Rol:
+                <span id="loggedRole"></span>
+              </p>
+
+              <button class="btn btn-outline-danger" onclick="confirmLogout()">
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container" style="display: none" id="tablaLibrosContainer">
+      <div class="table-responsive">
+        <table id="TablaLibros" class="table table-striped">
+          <thead>
+            <tr>
+              /
+              <th>Titulo</th>
+              <th>Autor</th>
+              <th>Año</th>
+              <th>Género</th>
+              <th>Editorial</th>
+              <th>Pais de La Editorial</th>
+              <th>Ciudad de La Editorial</th>
+              <th>ISBN</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal para agregar libros -->
+    <div
+      class="modal fade"
+      id="agregarLibroModal"
+      tabindex="-1"
+      aria-labelledby="modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Agregar Nuevo Libro</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="formAgregarLibro">
+              <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" required />
+              </div>
+              <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" class="form-control" id="autor" required />
+              </div>
+              <div class="mb-3">
+                <label for="año" class="form-label">Año</label>
+                <input type="text" class="form-control" id="año" required />
+              </div>
+              <div class="mb-3">
+                <label for="genero" class="form-label">Género</label>
+                <input type="text" class="form-control" id="genero" required />
+              </div>
+              <div class="mb-3">
+                <label for="nomEditorial" class="form-label">Editorial</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nomEditorial"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="paisEditorial" class="form-label"
+                  >Pais de La Editorial</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="paisEditorial"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="ciuEditorial" class="form-label"
+                  >Ciudad de La Editorial</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="ciuEditorial"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="ismb" class="form-label">ISBN</label>
+                <input type="text" class="form-control" id="isbn" required />
+              </div>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal para modificar libros -->
+    <div
+      class="modal fade"
+      id="modificarLibroModal"
+      tabindex="-1"
+      aria-labelledby="modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Modificar Libro</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="formModificarLibro">
+              <div class="mb-3">
+                <label for="tituloMod" class="form-label">Título</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tituloMod"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="autorMod" class="form-label">Autor</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="autorMod"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="añoMod" class="form-label">Año</label>
+                <input type="text" class="form-control" id="añoMod" required />
+              </div>
+              <div class="mb-3">
+                <label for="generoMod" class="form-label">Género</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="generoMod"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Editorialmod" class="form-label">Editorial</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Editorialmod"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="paismod" class="form-label"
+                  >Pais de La Editorial</label
+                >
+                <input type="text" class="form-control" id="paismod" required />
+              </div>
+              <div class="mb-3">
+                <label for="ciumod" class="form-label"
+                  >Ciudad de La Editorial</label
+                >
+                <input type="text" class="form-control" id="ciumod" required />
+              </div>
+              <div class="mb-3">
+                <label for="ismbmod" class="form-label">ISBN</label>
+                <input type="text" class="form-control" id="isbnmod" required />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Guardar Cambios
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="alertifyjs/alertify.js"></script>
+    <script src="alertifyjs/alertify.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
